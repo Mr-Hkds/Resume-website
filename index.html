@@ -1,67 +1,484 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Harkamal Deep Singh - Resume</title>
-    <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harkamal Deep Singh - Professional Resume</title>
+    <style>
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #3498db;
+            --accent-color: #f39c12;
+            --text-color: #2c3e50;
+            --light-bg: #f5f8fa;
+            --border-radius: 5px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .main-content {
+            padding: 30px 40px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .summary {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            margin-bottom: 30px;
+        }
+        
+        .education-item, .certification-item, .project-item {
+            margin-bottom: 20px;
+        }
+        
+        .institution-name, .cert-provider, .project-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 3px;
+        }
+        
+        .degree-name, .cert-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .edu-details, .duration {
+            color: #666;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .project-role {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-category {
+            background-color: var(--light-bg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+        }
+        
+        .skill-category-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .skill-list li:before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .achievements-list {
+            list-style-type: none;
+        }
+        
+        .achievements-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .achievements-list li:before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .languages-interests {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .skills-container, .languages-interests {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .header {
+                background: var(--primary-color) !important;
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .section-title {
+                color: var(--primary-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            @page {
+                margin: 0.5cm;
+            }
+        }
+
+        .download-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background-color: #e67e22;
+        }
+
+        .project-details {
+            margin-top: 5px;
+        }
+
+        .project-details ul {
+            padding-left: 20px;
+        }
+
+        .project-details li {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="resume-container">
-        <header class="header">
-            <h1 class="name">Harkamal Deep Singh</h1>
-            <p class="title">Management Student | Cybersecurity Enthusiast</p>
+        <div class="header">
+            <h1>HARKAMAL DEEP SINGH</h1>
             <div class="contact-info">
-                <div>Email: Mr.harkamal1403@gmail.com</div>
-                <div>Phone: 6283370364</div>
-                <div>LinkedIn: <a href="https://www.linkedin.com/in/harkamal-deep-singh-021a1528a" target="_blank">linkedin.com/in/harkamal-deep-singh</a></div>
-                <div>Location: Delhi NCR, India</div>
+                <div class="contact-item">
+                    <span>Email:</span>
+                    <span>mr.harkamal1426@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>Phone:</span>
+                    <span>+91-6283370364</span>
+                </div>
+                <div class="contact-item">
+                    <span>Location:</span>
+                    <span>Greater Noida, India</span>
+                </div>
             </div>
-        </header>
-
-        <section class="section">
-            <h2 class="section-title">EDUCATION</h2>
-            <div class="education-item">
-                <div class="degree-name">Bachelor of Business Administration (Marketing)</div>
-                <div class="institution-name">Army Institute of Management and Technology</div>
-                <div class="education-date">2022 – 2026</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="summary">
+                <p>Detail-oriented Management student with top academic achievements and specialized training in digital marketing, cybersecurity, and financial services. Demonstrated excellence through leading research initiatives on digital payment trends while developing strong analytical skills through IBM Cybersecurity and Microsoft Excel certifications. Multilingual professional combining customer support expertise with critical thinking to deliver innovative business solutions. Seeking opportunities that leverage my analytical capabilities, technical proficiency, and leadership potential in a forward-thinking organization.</p>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">PROJECTS</h2>
-            <div class="project-item">
-                <div class="project-title">Digital Payment Systems and Consumer Spending</div>
-                <div class="project-role">Role: Research Lead</div>
-                <ul>
-                    <li>Surveyed 300+ users and identified a 30% increase in impulse purchases.</li>
-                    <li>Used Excel to analyze behavioral change trends.</li>
+            
+            <div class="section">
+                <h2 class="section-title">EDUCATION</h2>
+                
+                <div class="education-item">
+                    <div class="degree-name">Bachelor of Business Administration/Bachelor of Management Studies</div>
+                    <div class="institution-name">Army Institute of Management and Technology, Greater Noida</div>
+                    <div class="edu-details">
+                        <span>2023 - Present</span>
+                        <span>CGPA: 9.3/10</span>
+                    </div>
+                    <div>Rank: 1st in College</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="degree-name">Senior Secondary (Class XII), Commerce Stream</div>
+                    <div class="institution-name">Army Public School, Unchi Bassi</div>
+                    <div class="edu-details">
+                        <span>2021 - 2023</span>
+                        <span>Percentage: 94.7% (School Topper)</span>
+                    </div>
+                    <div>Board: CBSE</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="degree-name">Secondary (Class X)</div>
+                    <div class="institution-name">Army Public School, Unchi Bassi</div>
+                    <div class="edu-details">
+                        <span>2019 - 2021</span>
+                        <span>Percentage: 88%</span>
+                    </div>
+                    <div>Board: CBSE</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">PROFESSIONAL DEVELOPMENT</h2>
+                
+                <div class="certification-item">
+                    <div class="cert-name">Certified Professional in Banking, Finance, and Insurance (CPBFI)</div>
+                    <div class="cert-provider">Bajaj Finserv and UpGrad</div>
+                    <div class="duration">2023</div>
+                    <ul>
+                        <li>Mastered concepts in banking operations, financial products, and insurance fundamentals</li>
+                        <li>Developed expertise in risk assessment and financial advisory practices</li>
+                    </ul>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="cert-name">IBM Cybersecurity Fundamentals Certification</div>
+                    <div class="cert-provider">IBM</div>
+                    <div class="duration">2023</div>
+                    <ul>
+                        <li>Acquired knowledge in threat intelligence, network security, and vulnerability management</li>
+                        <li>Developed skills in identifying and mitigating cyber threats and attack vectors</li>
+                    </ul>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="cert-name">Microsoft Office Specialist: Excel Associate</div>
+                    <div class="cert-provider">Microsoft</div>
+                    <div class="duration">2022</div>
+                    <ul>
+                        <li>Advanced proficiency in data analysis, formula creation, and PivotTable operations</li>
+                        <li>Expertise in data visualization and business intelligence reporting</li>
+                    </ul>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="cert-name">Google Ads for Beginners</div>
+                    <div class="cert-provider">Google</div>
+                    <div class="duration">2022</div>
+                    <ul>
+                        <li>Gained expertise in digital advertising campaign management and optimization</li>
+                        <li>Developed skills in audience targeting, keyword research, and performance analytics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">PROJECTS & RESEARCH EXPERIENCE</h2>
+                
+                <div class="project-item">
+                    <div class="project-title">Digital Payment Impact Analysis</div>
+                    <div class="project-role">Lead Researcher | January 2024 - May 2024</div>
+                    <div class="project-details">
+                        <ul>
+                            <li>Led a comprehensive research project examining digital payment impacts on consumer behavior in India</li>
+                            <li>Analyzed transaction data from 500+ consumers to identify emerging payment preferences</li>
+                            <li>Utilized statistical methods to correlate payment methods with purchasing decisions</li>
+                            <li>Presented findings to faculty panel, highlighting a 35% increase in impulse purchases through digital wallets</li>
+                            <li>Developed recommendations for businesses to optimize digital payment integration</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Social Media Usage Pattern Analysis</div>
+                    <div class="project-role">Research Associate | August 2023 - December 2023</div>
+                    <div class="project-details">
+                        <ul>
+                            <li>Conducted market research on social media consumption patterns across demographic segments</li>
+                            <li>Surveyed 300+ participants to collect quantitative and qualitative data</li>
+                            <li>Identified key trends in platform preferences and content engagement metrics</li>
+                            <li>Created visualization models demonstrating correlation between usage patterns and consumer behaviors</li>
+                            <li>Findings contributed to academic discourse on digital marketing strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">SKILLS</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <div class="skill-category-title">Technical Competencies</div>
+                        <ul class="skill-list">
+                            <li>Cybersecurity analysis and risk management</li>
+                            <li>Digital marketing campaign optimization</li>
+                            <li>Microsoft Office Suite (Excel, PowerPoint, Word)</li>
+                            <li>Data analysis and visualization</li>
+                            <li>Digital payment systems</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-category-title">Business & Management</div>
+                        <ul class="skill-list">
+                            <li>Customer relationship management</li>
+                            <li>Market research and analysis</li>
+                            <li>Financial product knowledge</li>
+                            <li>Business case development</li>
+                            <li>Strategic planning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <div class="skill-category-title">Soft Skills</div>
+                        <ul class="skill-list">
+                            <li>Critical thinking and problem-solving</li>
+                            <li>Public speaking and presentation</li>
+                            <li>Multilingual communication</li>
+                            <li>Leadership and team collaboration</li>
+                            <li>Detail-oriented analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">ACHIEVEMENTS & HONORS</h2>
+                
+                <ul class="achievements-list">
+                    <li>Secured Overall Rank 1 in College Examinations at Army Institute of Management and Technology (2023-24)</li>
+                    <li>Commerce Stream Topper with 94.7% in Class 12 at Army Public School, Unchi Bassi (2023)</li>
+                    <li>Awarded 2nd Position in Extempore Competition, showcasing excellence in public speaking (2022)</li>
+                    <li>Led winning team in inter-college business case competition, developing innovative market entry strategy (2023)</li>
+                    <li>Recognized for outstanding performance in management quiz competition at regional level (2024)</li>
                 </ul>
             </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">SKILLS</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <div class="skill-category-title">Technical Skills</div>
-                    <ul class="skill-list">
-                        <li>Cybersecurity Fundamentals</li>
-                        <li>Excel & Data Analysis</li>
-                        <li>Digital Marketing</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <div class="skill-category-title">Soft Skills</div>
-                    <ul class="skill-list">
-                        <li>Analytical Thinking</li>
-                        <li>Critical Reasoning</li>
-                        <li>Leadership</li>
-                    </ul>
+            
+            <div class="section">
+                <h2 class="section-title">LANGUAGES & INTERESTS</h2>
+                
+                <div class="languages-interests">
+                    <div>
+                        <h3 style="margin-bottom: 10px; color: var(--primary-color);">Languages</h3>
+                        <ul class="skill-list">
+                            <li>English (Professional proficiency)</li>
+                            <li>Hindi (Native proficiency)</li>
+                            <li>Punjabi (Native proficiency)</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="margin-bottom: 10px; color: var(--primary-color);">Interests</h3>
+                        <ul class="skill-list">
+                            <li>Financial technology innovations</li>
+                            <li>Cybersecurity developments</li>
+                            <li>Digital marketing trends</li>
+                            <li>Public speaking</li>
+                            <li>Strategic business analysis</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="download-btn" onclick="window.print()">Download Resume (PDF)</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
